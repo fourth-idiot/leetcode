@@ -17,7 +17,6 @@ class Solution:
         # Approach 2 (DP Approach)
         dp = {}
         dp["0,0"] = poured
-        remainingPoured = poured
         def helper(row, col):
             if((row < 0) or (col < 0) or (col > row)):
                 return 0
