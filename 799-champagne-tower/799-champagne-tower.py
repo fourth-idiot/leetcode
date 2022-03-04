@@ -1,5 +1,6 @@
 class Solution:
     def champagneTower(self, poured: int, query_row: int, query_glass: int) -> float:
+        # Approach 1
         n = query_row + 1
         matrix = [[0 for _ in range(n)] for _ in range(n)]
         matrix[0][0] = poured
