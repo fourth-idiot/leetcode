@@ -3,7 +3,7 @@ class Solution:
         # Create adjacency matrix
         adjList = {i: [] for i in range(numCourses)}
         for course, prerequisite in prerequisites:
-            adjList[course].append(prerequisite)
+            adjList[prerequisite].append(course)
             
         # DFS
         visited = set()
