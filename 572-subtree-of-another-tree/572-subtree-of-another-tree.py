@@ -21,7 +21,7 @@ class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         def helper(root):
             if(root is None):
-                return
+                return False
             elif(root.val == subRoot.val):
                 if self.isEqual(root, subRoot):
                     return True
