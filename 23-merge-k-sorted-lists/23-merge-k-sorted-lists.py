@@ -8,11 +8,11 @@ import heapq
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        h = [(l.val, idx) for idx, l in enumerate(lists) if l]
-        heapq.heapify(h)
+        minHeap = [(l.val, idx) for idx, l in enumerate(lists) if l]
+        heapq.heapify(minHeap)
         head = None
-        while(h):
-            val, idx = heapq.heappop(h)
+        while(len(minHeap) > 0):
+            val, idx = heapq.heappop(minHeap)
             if(head is None):
                 head = ListNode(val)
                 current = head
@@ -21,5 +21,5 @@ class Solution:
                 current = current.next
             lists[idx] = lists[idx].next
             if(lists[idx]):
-                heapq.heappush(h, (lists[idx].val, idx))
+                heapq.heappush(minHeap, (lists[idx].val, idx))
         return head
