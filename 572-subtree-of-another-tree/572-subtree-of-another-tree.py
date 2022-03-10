@@ -22,9 +22,11 @@ class Solution:
         def helper(root):
             if(root is None):
                 return
-            if self.isEqual(root,subRoot):
-                return True
-                # return self.isEqual(root, subRoot)
+            elif(root.val == subRoot.val):
+                if self.isEqual(root, subRoot):
+                    return True
+                else:
+                    return (helper(root.left) or helper(root.right))
             else:
                 return (helper(root.left) or helper(root.right))
         return helper(root)
