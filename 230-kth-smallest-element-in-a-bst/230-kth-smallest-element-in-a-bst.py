@@ -6,18 +6,6 @@
 #         self.right = right
 
 class Solution:
-    # def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-    #     output = []
-    #     def helper(root):
-    #         if(root is not None):
-    #             if(root.left is not None):
-    #                 helper(root.left)
-    #             output.append(root.val)
-    #             if(root.right is not None):
-    #                 helper(root.right)
-    #     helper(root)
-    #     return output
-    
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         count = 0
         ans = None
