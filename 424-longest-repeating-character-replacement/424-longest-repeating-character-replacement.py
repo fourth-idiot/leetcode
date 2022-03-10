@@ -16,16 +16,16 @@ class Solution:
         i, j = 0, 0
         while(j < len(s)):
             counter[s[j]] = counter.get(s[j], 0) + 1
-            l = (j - i + 1)
             maxFreq = self.getMaxFreq(counter)
+            l = (j - i + 1)
             isValid = self.isValidSubstring(l, maxFreq, k)
             if(self.isValidSubstring(l, maxFreq, k)):
                 maxL = max(l, maxL)
             else:
                 while(not self.isValidSubstring(l, maxFreq, k)):
                     counter[s[i]] -= 1
+                    maxFreq = self.getMaxFreq(counter)
                     i += 1
                     l = (j - i + 1)
-                    maxFreq = self.getMaxFreq(counter)
             j += 1
         return maxL
