@@ -1,28 +1,31 @@
 class Solution:
     def isValidSubstring(self, l, maxFreq, k):
-        return (l - maxFreq) <= k 
+        """Checks if the substring is valid according to the problem statement."""
+        return (l - maxFreq) <= k
         
     def getMaxFreq(self, counter):
-        output = 0
-        for value in counter.values():
-            output = max(output, value)
-        return output
+        """Get frequency of the most frequent character in a string."""
+        maxFreq = 0
+        for freq in counter.values():
+            maxFreq = max(maxFreq, freq)
+        return maxFreq
     
     def characterReplacement(self, s: str, k: int) -> int:
-        n = len(s)
-        maxLen = float("-inf")
-        i, j = 0, 0
+        maxL = float("-inf")
         counter = {}
-        while(j < n):
+        i, j = 0, 0
+        while(j < len(s)):
             counter[s[j]] = counter.get(s[j], 0) + 1
             l = (j - i + 1)
             maxFreq = self.getMaxFreq(counter)
             isValid = self.isValidSubstring(l, maxFreq, k)
             if(self.isValidSubstring(l, maxFreq, k)):
-                maxLen = max(l, maxLen)
+                maxL = max(l, maxL)
             else:
-                while(not self.isValidSubstring(j-i+1, maxFreq, k)):
+                while(not self.isValidSubstring(l, maxFreq, k)):
                     counter[s[i]] -= 1
                     i += 1
+                    l = (j - i + 1)
+                    maxFreq = self.getMaxFreq(counter)
             j += 1
-        return maxLen
+        return maxL
