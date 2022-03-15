@@ -1,5 +1,6 @@
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
+        # Remove invalid parentheses in forward direction
         totalStack = []
         pStack = []
         for c in s:
@@ -14,6 +15,7 @@ class Solution:
                     if(lastP == "("):
                         pStack.pop()
                         totalStack.append(c)
+        # Remove invalidf parentheses in backend direction
         updatedTotalStack = []
         pStack = []
         for c in totalStack[::-1]:
