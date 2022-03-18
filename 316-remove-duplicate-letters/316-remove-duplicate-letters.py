@@ -1,12 +1,12 @@
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
+        # Approach 1
         counter = {}
         for c in s:
             counter[c] = counter.get(c, 0) + 1
         pos = 0
         for i in range(len(s)):
             if(s[i] < s[pos]):
-                print(s[i], s[pos])
                 pos = i
             counter[s[i]] -= 1
             if(counter[s[i]] == 0):
