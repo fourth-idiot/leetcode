@@ -1,6 +1,8 @@
 class Solution:
     def minDominoRotations(self, tops: List[int], bottoms: List[int]) -> int:
         n = len(tops)
+        # Get the element/s present in every column of dominoes
+        # It's not possible to make top or bottom having same value if there are no common elements
         commons = set((tops[0], bottoms[0]))
         for i in range(1, n):
             commons = commons & set((tops[i], bottoms[i]))
@@ -17,4 +19,3 @@ class Solution:
                     bottom_count += 1
             output = min(output, top_count, bottom_count)
         return output
-                    
