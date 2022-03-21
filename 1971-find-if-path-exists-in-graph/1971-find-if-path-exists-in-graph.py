@@ -11,15 +11,13 @@ class Solution:
                 adjList[node2].append(node1)
             else:
                 adjList[node2] = [node1]
-        visited = {
-            
-        }
+        visited = set()
         stack = [source]
         while(stack):
             node = stack.pop()
             if(node == destination):
                 return True
-            visited[node] = True
+            visited.add(node)
             for neigh in adjList[node]:
                 if(neigh not in visited):
                     stack.append(neigh)
