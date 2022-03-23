@@ -1,7 +1,5 @@
 class Solution:
     def brokenCalc(self, startValue: int, target: int) -> int:
-        if(startValue == target):
-            return 0
         count = 0
         while(target > startValue):
             if(target % 2 == 0):
