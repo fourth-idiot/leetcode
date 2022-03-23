@@ -27,5 +27,4 @@ class Solution:
             visited.add(path[-1])
             for neigh in graph[path[-1]]:
                 queue.append(path + [neigh])
-            # visited.remove(path[-1])
         return allPaths
