@@ -24,5 +24,4 @@ class Solution:
                     currentNumNodes += 1
             output.append(prevNodes)
             prevNumNodes = currentNumNodes
-        print(output)
         return output
