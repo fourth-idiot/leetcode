@@ -20,7 +20,6 @@ class Solution:
                     totalSteps[newRow][newCol] = totalSteps[row][col] + 1
                     grid[newRow][newCol] = 0
                     queue.append((newRow, newCol))
-        print(grid)
         output = 0
         for i in range(numRows):
             for j in range(numCols):
