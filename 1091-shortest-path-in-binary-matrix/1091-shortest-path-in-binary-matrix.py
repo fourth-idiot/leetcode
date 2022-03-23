@@ -1,40 +1,24 @@
 class Solution:        
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
-        
-        max_row = len(grid) - 1
-        max_col = len(grid[0]) - 1
-        directions = [
-            (-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-        
-        # Helper function to find the neighbors of a given cell.
-        def get_neighbours(row, col):
-            for row_difference, col_difference in directions:
-                new_row = row + row_difference
-                new_col = col + col_difference
-                if not(0 <= new_row <= max_row and 0 <= new_col <= max_col):
-                    continue
-                if grid[new_row][new_col] != 0:
-                    continue
-                yield (new_row, new_col)
-        
-        # Check that the first and last cells are open. 
-        if grid[0][0] != 0 or grid[max_row][max_col] != 0:
+        n = len(grid)
+        src = (0, 0)
+        dst = (n - 1, n - 1)
+        if((grid[src[0]][src[1]] != 0) or (grid[dst[0]][dst[1]] != 0)):
             return -1
-        
-        # Set up the BFS.
-        queue = deque()
-        queue.append((0, 0))
-        grid[0][0] = 1 
-        
-        # Carry out the BFS.
-        while queue:
-            row, col = queue.popleft()
+        directions = [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
+        queue = [src]
+        grid[0][0] = 1
+        while(queue):
+            row, col = queue.pop(0)
             distance = grid[row][col]
-            if (row, col) == (max_row, max_col):
+            if((row == dst[0]) and (col == dst[1])):
                 return distance
-            for neighbour_row, neighbour_col in get_neighbours(row, col):
-                grid[neighbour_row][neighbour_col] = distance + 1
-                queue.append((neighbour_row, neighbour_col))
-        
-        # There was no path.
+            for d in directions:
+                newRow = row + d[0]
+                newCol = col + d[1]
+                if((newRow >= 0) and (newRow < n) and
+                   (newCol >= 0) and (newCol < n) and
+                   (grid[newRow][newCol] == 0)):
+                    grid[newRow][newCol] = distance + 1
+                    queue.append((newRow, newCol))
         return -1
