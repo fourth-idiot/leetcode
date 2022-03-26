@@ -16,7 +16,6 @@ class Solution:
         row[0] = 1
         for coin in coins:
             for j in range(1, len(row)):
-                if(j >= coin):
-                    row[j] += row[j - coin]
+                if(j >= coin): row[j] += row[j - coin]
         return row[-1]
         
