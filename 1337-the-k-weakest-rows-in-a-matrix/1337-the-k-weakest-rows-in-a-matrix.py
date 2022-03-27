@@ -15,6 +15,7 @@ class Solution:
     def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
         maxHeap = []
         heapq.heapify(maxHeap)
+        # Takes O(KLogN + N) time to add elements to the heap
         for i, row in enumerate(mat):
             rowItem = Row(i, row)
             if((len(maxHeap) == k) and (rowItem > maxHeap[0])):
@@ -23,6 +24,7 @@ class Solution:
             elif(len(maxHeap) < k):
                 heapq.heappush(maxHeap, rowItem)
         output = []
+        # Takes O(K) time to get indices of K weakest rows
         while(len(maxHeap) > 0):
             rowItem = heapq.heappop(maxHeap)
             output.append(rowItem.idx)
