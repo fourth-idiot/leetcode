@@ -5,5 +5,4 @@ class Solution:
         for num in nums[1:]:
             if(num == lastNum):
                 return num
-            else:
-                lastNum = num
+            lastNum = num
