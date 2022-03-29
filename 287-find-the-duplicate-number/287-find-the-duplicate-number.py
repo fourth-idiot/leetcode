@@ -8,9 +8,17 @@ class Solution:
         #         return num
         #     lastNum = num
         
-        # Approach 2
-        seen = set()
+        # # Approach 2
+        # seen = set()
+        # for num in nums:
+        #     if(num in seen):
+        #         return num
+        #     seen.add(num)
+        
+        # Approach 3
         for num in nums:
-            if(num in seen):
-                return num
-            seen.add(num)
+            absNum = abs(num)
+            if(nums[absNum] < 0):
+                return absNum
+            else:
+                nums[absNum] *= -1
