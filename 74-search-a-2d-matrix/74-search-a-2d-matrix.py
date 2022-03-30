@@ -1,5 +1,3 @@
-import math
-
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         numRows, numCols = len(matrix), len(matrix[0])
@@ -14,4 +12,3 @@ class Solution:
             else:
                 low = mid + 1
         return False
-                
