@@ -7,7 +7,7 @@ class Solution:
             if(c == "@"):
                 isSkip = False
                 isDomain = True
-            if((isSkip) or
+            elif((isSkip) or
                ((c == ".") and (not isDomain))):
                 continue
             elif(c == "+"):
