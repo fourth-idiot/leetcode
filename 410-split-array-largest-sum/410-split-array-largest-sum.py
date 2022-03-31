@@ -27,18 +27,20 @@
 
 class Solution:
     def isPartitioningPossible(self, nums, target, m):
-        if(nums[0] > target):
-            return False
-        s = nums[0]
-        count = 1
-        for num in nums[1:]:
-            if(num > target):
+        subArraySum, subArrayCount = 0, 0
+        i = 0
+        while(i < len(nums)):
+            if(nums[i] > target):
                 return False
-            s += num
-            if(s > target):
-                count += 1
-                s = num
-        return (count <= m)
+            subArraySum += nums[i]
+            if(subArraySum > target):
+                subArraySum = 0
+                subArrayCount += 1
+            else:
+                i += 1
+        if(subArraySum != 0):
+            subArrayCount += 1
+        return (subArrayCount <= m)
     
     def splitArray(self, nums: List[int], m: int) -> int:
         low, high = 1, sum(nums)
