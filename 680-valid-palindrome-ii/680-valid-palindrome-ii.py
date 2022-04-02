@@ -13,8 +13,8 @@ class Solution:
         i, j = 0, len(s) - 1
         while(i < j):
             if(s[i] != s[j]):
-                opt1 = self.isPalindrome(s[i+1:j+1])
-                opt2 = self.isPalindrome(s[i:j])
+                opt1 = self.isPalindrome(s[i:j])
+                opt2 = self.isPalindrome(s[i+1:j+1])
                 return opt1 or opt2
             i += 1
             j -= 1
