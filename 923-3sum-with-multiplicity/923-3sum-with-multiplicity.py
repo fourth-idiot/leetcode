@@ -10,7 +10,6 @@ class Solution:
         return count
     
     def threeSumMulti(self, arr: List[int], target: int) -> int:
-        arr.sort()
         count = 0
         for i in range(len(arr)):
             count += self.twoSumMulti(arr, i, target - arr[i])
