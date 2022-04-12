@@ -25,4 +25,3 @@ class Solution:
             for j in range(numCols):
                 board[i][j] = modifiedBoard[i][j]
         return
-        print(modifiedBoard)
