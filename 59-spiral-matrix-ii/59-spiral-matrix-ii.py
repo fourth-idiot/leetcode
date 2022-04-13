@@ -12,7 +12,6 @@ class Solution:
                     direction = "down"
                     nextI = currentI + 1
                     nextJ = currentJ
-                    
             elif(direction == "down"):
                 nextI = currentI + 1
                 nextJ = currentJ
@@ -35,7 +34,8 @@ class Solution:
                     nextI = currentI
                     nextJ = currentJ + 1    
             else:
-                print("Unknown direction")
+                print("[ERROR] Unknown direction")
+                return
             currentI = nextI
             currentJ = nextJ
         return grid
