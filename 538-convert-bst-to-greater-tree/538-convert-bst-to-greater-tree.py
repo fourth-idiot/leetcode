@@ -10,7 +10,8 @@ class Solution:
         s = 0
         def helper(root):
             nonlocal s
-            if(root is None): return
+            if(root is None):
+                return
             helper(root.right)
             root.val += s
             s = root.val
