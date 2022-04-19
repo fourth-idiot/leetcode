@@ -10,8 +10,6 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        3, 2, 1
-        1, 3, 2, 4
         output = []
         def helper(root):
             if(root is not None):
@@ -19,7 +17,6 @@ class Solution:
                 output.append(root)
                 helper(root.right)
         helper(root)
-        # Find node 1 and node 2
         node1, node2 = None, None
         for i in range(len(output) - 1):
             if(output[i].val > output[i + 1].val):
