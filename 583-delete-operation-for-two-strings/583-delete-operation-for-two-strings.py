@@ -8,5 +8,4 @@ class Solution:
                     dp[i][j] = dp[i - 1][j - 1] + 1
                 else:
                     dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
-        maxLen = dp[-1][-1]
-        return (n1 - maxLen) + (n2 - maxLen)
+        return n1 + n2 - 2 * (dp[-1][-1])
