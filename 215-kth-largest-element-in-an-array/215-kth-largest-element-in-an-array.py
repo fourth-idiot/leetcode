@@ -3,11 +3,8 @@ class Solution:
         minHeap = []
         heapify(minHeap)
         for num in nums:
+            if((len(minHeap) >= k) and (num > minHeap[0])):
+                heappop(minHeap)
             if(len(minHeap) < k):
                 heappush(minHeap, num)
-            elif(num > minHeap[0]):
-                heappop(minHeap)
-                heappush(minHeap, num)
-            else:
-                continue
         return minHeap[0]
