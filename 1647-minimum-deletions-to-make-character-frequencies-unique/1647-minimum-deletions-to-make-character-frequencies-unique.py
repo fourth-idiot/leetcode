@@ -15,6 +15,3 @@ class Solution:
             else:
                 prevVal = val
         return output
-    
-        4, 1, 1, 1
-        4, 0, 0, 0,
