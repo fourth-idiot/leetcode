@@ -32,7 +32,8 @@ class Solution:
             return n
         fn_2, fn_1 = 0, 1
         for _ in range(2, n + 1):
-            fn = fn_1 + fn_2
-            fn_2 = fn_1
-            fn_1 = fn
+            fn_2, fn_1 = fn_1, fn_1 + fn_2
+            # fn = fn_1 + fn_2
+            # fn_2 = fn_1
+            # fn_1 = fn
         return fn_1
