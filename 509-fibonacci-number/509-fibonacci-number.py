@@ -11,7 +11,11 @@ class Solution:
         def helper(n):
             if(n in dp):
                 return dp[n]
-            return dp.get(n - 1, helper(n - 1)) + dp.get(n - 2, helper(n - 2))
+            if((n - 1) not in dp):
+                dp[n - 1] = helper(n - 1)
+            if((n - 2) not in dp):
+                dp[n - 2] = helper(n - 2)
+            return dp[n - 1] + dp[n - 2]
         return helper(n)
     
         # # Approach 3 (Dynamic programming - Tabulation)
