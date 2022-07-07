@@ -1,8 +1,6 @@
 class Solution:
     def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
-        dp = {}
         def helper(i, j, k):
-            nonlocal dp
             # If we reached at the end of s3,
             # then it is possible to interleave s1 and s2 to form s3
             if(k == len(s3)):
@@ -20,6 +18,8 @@ class Solution:
                 if((i, j + 1, k + 1) not in dp):
                     dp[(i, j + 1, k + 1)] = helper(i, j + 1, k + 1)
                 return (s2[j] == s3[k]) and dp[(i, j + 1, k + 1)]
+            
+            # Take a break, you've reached a milestone :)
             # Now we are sure that none of the strings have reached their ends,
             # so we can compare char from s1 with char from s3, and char from s3 with char from s3
             # If char from s3 do not match with chars from s1 and s3
@@ -44,6 +44,8 @@ class Solution:
                 if((i, j + 1, k + 1) not in dp):
                     dp[(i, j + 1, k + 1)] = helper(i, j + 1, k + 1)
                 return dp[(i + 1, j, k + 1)] or dp[(i, j + 1, k + 1)]
+        
+        dp = {}
         if(len(s1) + len(s2) != len(s3)):
             return False
         return helper(0, 0, 0)
