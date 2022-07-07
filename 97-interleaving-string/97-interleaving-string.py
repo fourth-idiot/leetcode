@@ -1,5 +1,6 @@
 class Solution:
     def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
+        # Approach using dynamic programming - memoization
         def helper(i, j, k):
             # If we reached at the end of s3,
             # then it is possible to interleave s1 and s2 to form s3
@@ -36,8 +37,8 @@ class Solution:
                 if((i, j + 1, k + 1) not in dp):
                     dp[(i, j + 1, k + 1)] = helper(i, j + 1, k + 1)
                 return dp[(i, j + 1, k + 1)]
-            # Else if char from s3 match with char from s1 and char from s2,
-            # the explore both of the options
+            # Else if char from s3 match with both char from s1 and char from s2,
+            # the go deeper in both ways.
             else:
                 if((i + 1, j, k + 1) not in dp):
                     dp[(i + 1, j, k + 1)] = helper(i + 1, j, k + 1)
@@ -46,6 +47,8 @@ class Solution:
                 return dp[(i + 1, j, k + 1)] or dp[(i, j + 1, k + 1)]
         
         dp = {}
+        # If the lengths do not add up, then straight away we can say that it's not posible to interleave
+        # This condition tremendously helps us to simplify conditions in our code.
         if(len(s1) + len(s2) != len(s3)):
             return False
         return helper(0, 0, 0)
