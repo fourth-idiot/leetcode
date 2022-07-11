@@ -7,6 +7,7 @@
 
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        # Approach very similar to level order traversal
         if(root is None):
             return []
         output = []
@@ -16,6 +17,8 @@ class Solution:
             nextNumNodes = 0
             for i in range(currNumNodes):
                 node = queue.pop(0)
+                # In level order traversal, we append all node values to the output list
+                # Here, we append node val to the output only if it is the last node at the current level
                 if((i + 1) == currNumNodes):
                     output.append(node.val)
                 if(node.left):
