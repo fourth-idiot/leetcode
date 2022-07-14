@@ -7,11 +7,13 @@
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        if(not inorder):
+        if(len(inorder) == 0):
             return None
         val = preorder.pop(0)
         node = TreeNode(val)
         idx = inorder.index(val)
-        node.left = self.buildTree(preorder, inorder[:idx])
-        node.right = self.buildTree(preorder, inorder[(idx + 1):])
+        leftInorder = inorder[:idx]
+        rightInorder = inorder[(idx + 1):]
+        node.left = self.buildTree(preorder, leftInorder)
+        node.right = self.buildTree(preorder, rightInorder)
         return node
