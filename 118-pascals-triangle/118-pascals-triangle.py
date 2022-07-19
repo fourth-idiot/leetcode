@@ -1,5 +1,9 @@
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
+        # In the Pascals's Triangle, i'th row has i number of elements
+        # with both extremes of that row having value as 1.
+        # Now we can find out the value at j'th index (not an extreme) as following:
+        # currentRow[j] = lastRow[j - 1] + lastRow[j]
         output = []
         for i in range(1, numRows + 1):
             current = []
