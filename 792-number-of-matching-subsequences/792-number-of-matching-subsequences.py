@@ -16,6 +16,9 @@ class Trie:
             current.val = current.val or val
     
     def searchPrefix(self, word):
+        # Returns if the word has been queried previously and the query results
+        # If the word is present in Trie, it means it was queried before
+        # Previous querying results can be extrated from the val attribute of the last node.
         current = self.root
         for c in word:
             if(c not in current.childrens):
@@ -39,8 +42,8 @@ class Solution:
         
     def numMatchingSubseq(self, s: str, words: List[str]) -> int:
         # For every word, we can check if it is subsequence of s using isMatchingSubseq method.
-        # To optimize further, we can store all the query words in a try along with
-        # along with its result of whether it was subsequence or not
+        # To optimize further, we can store all the query words in a Trie
+        # along with its result of whether it was subsequence of s or not.
         count = 0
         trie = Trie()
         for word in words:
