@@ -13,6 +13,7 @@ class Trie:
             if(c not in current.childrens):
                 current.childrens[c] = TrieNode(val)
             current = current.childrens[c]
+            current.val = current.val or val
     
     def searchPrefix(self, word):
         current = self.root
@@ -24,6 +25,11 @@ class Trie:
         
 class Solution:
     def isMatchingSubseq(self, s1, s2):
+        # Checks if s2 is a subsequence of s1
+        # To do that, initialize pointers at the start of s1 and s2
+        # If character match, then increment both the pointer by 1 step,
+        # Else move the pointer on s1 by 1 step.
+        # If we reach end of s2, then s2 is a subsequence of s1
         i, j = 0, 0
         while((i < len(s1)) and (j < len(s2))):
             if(s1[i] == s2[j]):
@@ -32,16 +38,17 @@ class Solution:
         return j == len(s2)
         
     def numMatchingSubseq(self, s: str, words: List[str]) -> int:
+        # For every word, we can check if it is subsequence of s using isMatchingSubseq method.
+        # To optimize further, we can store all the query words in a try along with
+        # along with its result of whether it was subsequence or not
         count = 0
         trie = Trie()
         for word in words:
             if(len(word) > len(s)):
                 continue
             status, val = trie.searchPrefix(word)
-            if(status):
-                count += val
-            else:
+            if(not status):
                 val = self.isMatchingSubseq(s, word)
                 trie.insert(word, val)
-                count += val
+            count += val
         return count
