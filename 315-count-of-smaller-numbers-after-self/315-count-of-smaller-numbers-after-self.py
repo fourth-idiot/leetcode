@@ -18,5 +18,4 @@ class Solution:
             newI = self.binarySearch(sortedNums, target)
             output[oldI] = newI
             sortedNums.insert(newI, target)
-            # sortedNums = sortedNums[:newI] + [target] + sortedNums[newI:]
         return output
