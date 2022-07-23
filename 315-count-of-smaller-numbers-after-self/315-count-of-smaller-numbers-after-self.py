@@ -10,6 +10,11 @@ class Solution:
         return i
     
     def countSmaller(self, nums: List[int]) -> List[int]:
+        # For every nums[i], since we need number of smaller elements to the right,
+        # we will start iterating from end of the list in reverse order.
+        # Using binary search, We will find its position `i` in the sorted list of numbers to its right. `i` will also be the number of smaller elements than that number.
+        # Hence, we will update that value in the output and add number to that index in the sorted list.
+        # Finally we will return the list
         n = len(nums)
         output = [0 for _ in range(n)]
         sortedNums = []
