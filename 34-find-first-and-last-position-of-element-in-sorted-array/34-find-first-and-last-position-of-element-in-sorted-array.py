@@ -22,4 +22,5 @@ class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         if(not nums):
             return [-1, -1]
+        # Run binary search twice, to find first and last position of element in sorted array
         return [self.binarySearchLeft(nums, target), self.binarySearchRight(nums, target)]
