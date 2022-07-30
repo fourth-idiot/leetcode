@@ -24,7 +24,7 @@ class Solution:
 #                 output.append(w1)
 #         return output
 
-    # Approach 
+    # Approach 2
     def wordSubsets(self, words1: List[str], words2: List[str]) -> List[str]:
         words2Counter = {}
         for word in words2:
